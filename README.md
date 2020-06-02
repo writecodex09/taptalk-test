@@ -11,3 +11,5 @@ go mod init taptalk
 disini saya menggunakan SQL Database yaitu MySQL
 Disini saya memodifikasi sedikit dari requirement yang diberikan , dimana saya mengganti atribut user yang semula fullname
 berganti menjadi firt_name dan last_name
+
+3. Langkah ketiga yang saya lakukan adalah membuat folder views dimana nanti nya akan berisi template engine yang akan mempercantik tampilan website dalam project test kali ini
