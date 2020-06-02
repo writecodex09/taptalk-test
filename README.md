@@ -13,3 +13,5 @@ Disini saya memodifikasi sedikit dari requirement yang diberikan , dimana saya m
 berganti menjadi firt_name dan last_name
 
 3. Langkah ketiga yang saya lakukan adalah membuat folder views dimana nanti nya akan berisi template engine yang akan mempercantik tampilan website dalam project test kali ini
+
+4. Langkah ke 4 saya membuat file register.html didalam folder views
