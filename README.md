@@ -7,3 +7,6 @@ mkdir taptalk.io
 cd taptalk.io
 go mod init taptalk
 
+2. Langkah kedua yang saya lakukan adalah membuat database yang akan menyimpan data user 
+disini saya menggunakan SQL Database yaitu MySQL
+
