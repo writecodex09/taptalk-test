@@ -3,15 +3,14 @@ package main
 //import pacakge dan library 
 
 import (
-
 	 "database/sql"
 	 "fmt"
-	 "html/template"
 	 "log"
 	 "net/http"
 	 "golang.org/x/crypto/bcrypt"
-	 _ "github.com/go-sql-driver/mysql"
-	"github.com/kataras/go-sessions"
+	 _"github.com/go-sql-driver/mysql"
+	//  "github.com/kataras/go-sessions"
+	// "os"
 )
 
 //membuat variabel db dan err
@@ -56,8 +55,20 @@ func main(){
 
 	defer db.Close()
 
-	fmt.Println("Server running on port :8080")
-	http.ListenAndServe(":8000", nil)
+	fmt.Println("starting web server at http://localhost:8080/")
+	http.ListenAndServe(":8080", nil)
+}
+//func checkErr
+func checkErr(w http.ResponseWriter, r *http.Request, err error) bool {
+	if err != nil {
+
+		fmt.Println(r.Host + r.URL.Path)
+
+		http.Redirect(w, r, r.Host+r.URL.Path, 301)
+		return false
+	}
+
+	return true
 }
 
 //fungsi Query User yang berguna untuk mengambil data pengguna 
@@ -72,8 +83,7 @@ func QueryUser(username string) user {
 		email,
 		username,
 		password 
-		FROM users WHERE username=?
-		`, username).
+		FROM users WHERE username=?`, username).
 		Scan(
 			&users.ID,
 			&users.FirstName,
@@ -81,39 +91,37 @@ func QueryUser(username string) user {
 			&users.Birthday,
 			&users.Email,
 			&users.Username,
-			&users.Password
+			&users.Password,
 		)
 	return users
 }
 
 //func register 
 func register(w http.ResponseWriter, r *http.Request){
-	//kode ini saya buat untuk mengecek/memvalidasi apakah method yang digunakan post atau tidak
-	//jika method yang digunakan bukan post maka akan terredirect/menampilkan halaman register.html yang
-	//ada di folder views
-	if r.method != "POST" {
-		http.Serverfile(w, r, "views/register.html")
+	if r.Method != "POST" {
+		http.ServeFile(w, r, "views/register.html")
 		return
 	}
 
-	first_name := r.formValue("first_name")
-	last_name := r.formValue("last_name")
-	birthday := r.formValue("email")
-	email := r.formValue("birthday")
-	username := r.formValue("username")
-	password := r.formValue("password")
+	first_name := r.FormValue("first_name")
+	last_name := r.FormValue("last_name")
+	birthday := r.FormValue("birthday")
+	email := r.FormValue("email")
+	username := r.FormValue("username")
+	password := r.FormValue("password")
 	
 	users := QueryUser(username) 
 
 	if(user{}) == users {
+		//disini saya akan mengenkripsi password yang dimasukan oleh user untuk menunjang keamanan data
 		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 
-		if len(hashedPassword) != 0 && checkErr(w, r, err){
-			//code ini saya gunakan untuk mengecek apakah username yang dimasukan sudah ada atau belum didalam database,
-			//jika tidak ada maka proses akan dilanjutkakn 
+		if len(hashedPassword) != 0 && checkErr(w, r, err) {
+			//pada bagian ini saya akan cek apakah username yang ingin di daftarkan dalam sistem/aplikasi
+			//sudah ada atau belum, jika belum ada maka proses akan dilanjutkan 
 			stmt, err := db.Prepare("INSERT INTO users SET first_name=?, last_name=?, birthday=?, email=?, username=?, password=?")
 			if err == nil {
-				_, err := stmt.Exec(&first_name, &hashedPassword, &last_name, &username)
+				_, err := stmt.Exec(&first_name, &last_name, &birthday, &email, &username, &hashedPassword)
 				if err != nil {
 					http.Error(w, err.Error(), http.StatusInternalServerError)
 					return
@@ -125,3 +133,4 @@ func register(w http.ResponseWriter, r *http.Request){
 	}else{
 			http.Redirect(w, r, "/register", 302)
 	}
+}
