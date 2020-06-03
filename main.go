@@ -60,16 +60,36 @@ func main(){
 }
 //fungsi login
 func login(w http.ResponseWriter, r *http.Request){
+	//disini kita akan mengecek session 
+	//code yang ada dibawah ini saya gunakan untuk membuat session
 	session := sessions.Start(w, r)
 	if len(session.GetString(username)) != 0 && checkErr(w, r, err){
 		http.Redirect(w, r, "/", 302)
 	}
+	//disini saya mencek apakah bila ada session , dan session itu benar bermethod post atau tidak 
 	if r.Method != "POST" {
+		//jika tidak maka akan diredirect kehalaman login
 		http.ServeFile(w, r, "views/login.html")
 		return
 	}
 	username := r.FormValue("username")
 	password := r.FormValue("password")
+
+	//kita akan mengambil data pengguna berdasarkan username 
+	users := QueryUser(username)
+
+	//disini saya melakukan pengecekan 
+	//dimana saya akan melakukan perbandingan password yang ada didatabase
+	var password_tes = bcrypt.CompareHashAndPassword([]byte(users.Password),[]byte(password))
+
+	if password_tes == nil {
+		session := sessions.Start(w, r)
+		session.Set("username", users.Username)
+		session.Set("password", users.Password)
+		http.Redirect(w, r, "/", 302))
+	}else{
+		http.Redirect(w, r, "/login", 302)
+	}
 }
 //func checkErr
 func checkErr(w http.ResponseWriter, r *http.Request, err error) bool {
