@@ -16,8 +16,14 @@
         <nav>
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">TapTalk.io</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
             </div>
         </nav>
-
+         <div class="container">
+         <h3>Welcome {{ .username }}</h3>
+    </div>
     </body>
 </html>
