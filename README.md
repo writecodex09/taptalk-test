@@ -35,3 +35,5 @@ sudah saya download sebelumnya
 error handle
 
 10. Setelah itu saya membuat route /register dengan menggunakan fungsi http.HandleFunc()
+
+11. Langkah berikutnya saya mengupdate fungsi main dengan memasukan fungsi connect() , routes() dan menjalankan fungsi http.ListenAndServe() untuk menghidupkan server dan menjalankan nya pada port 8080
