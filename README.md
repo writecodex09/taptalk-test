@@ -50,3 +50,5 @@ error handle
 16. Setelah fungsi login dan tampilan login selesai saya mengerjakan tampilan home
 
 17. Selanjutnya saya mengerjakan func home
+
+18 Terakhir saya mengerjakan fungsi logout , dimana fungsi ini digunakan untuk menghapus session 
