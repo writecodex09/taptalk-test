@@ -1,5 +1,7 @@
 package main
 
+//import pacakge dan library 
+
 import (
 
 	 "database/sql"
@@ -12,9 +14,12 @@ import (
 	"github.com/kataras/go-sessions"
 )
 
+//membuat variabel db dan err
+
 var db *sql.DB
 var err error
 
+//membuat struct user 
 type user struct {
 	ID        int
 	FirstName  string
@@ -22,6 +27,19 @@ type user struct {
 	Email  string
 	Username  string
 	Password  string
+}
+
+//membuat fungsi untuk melakukan koneksi kedalam database
+func connect_db(){
+	db, err = sql.Open("mysql", "root:@tcp(127.0.0.1)/taptalk")
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+	err = db.Ping()
+	if err !=nil {
+		log.Fatalln(err)
+	}
 }
 
 func main(){
