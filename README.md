@@ -22,3 +22,11 @@ berganti menjadi firt_name dan last_name
 sudah saya download sebelumnya 
 
 7. Langkah selanjutnya saya membuat 2 buah variabel yaitu var err dan  var db
+
+8. Setelah itu saya membuat struct user yang didalam nya terdapat ID        int
+	FirstName  string
+	LastName string
+	Email  string
+	Username  string
+	Password  string
+    yang akan menjadi model 
