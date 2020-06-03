@@ -100,6 +100,6 @@ func register(w http.ResponseWriter, r *http.Request){
 	username := r.formValue("username")
 	password := r.formValue("password")
 	
-	users := QueryUser(username)
+	users := QueryUser(username) 
 
 }
