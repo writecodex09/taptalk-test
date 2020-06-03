@@ -15,6 +15,15 @@ import (
 var db *sql.DB
 var err error
 
+type user struct {
+	ID        int
+	FirstName  string
+	LastName string
+	Email  string
+	Username  string
+	Password  string
+}
+
 func main(){
 	fmt.Println("test")
 }
