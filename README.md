@@ -46,3 +46,5 @@ error handle
 14. Langkah selanjutnya yang saya lakukan adalah saya mengerjakan tampilan untuk form login nya
 
 15. Setelah tampilan login selesai saya mengerjakan fungsi login 
+
+16. Setelah fungsi login dan tampilan login selesai saya mengerjakan tampilan home
