@@ -48,6 +48,8 @@ func routes() {
 	http.HandleFunc("/register", register)
 }
 
+//main function
+
 func main(){
 	connect_db()
 	routes()
@@ -57,6 +59,9 @@ func main(){
 	fmt.Println("Server running on port :8080")
 	http.ListenAndServe(":8000", nil)
 }
+
+//fungsi Query User yang berguna untuk mengambil data pengguna 
+//berdasarkan username
 func QueryUser(username string) user {
 	var users = user{}
 	err = db.QueryRow(`
@@ -80,6 +85,21 @@ func QueryUser(username string) user {
 		)
 	return users
 }
+
+//func register 
 func register(w http.ResponseWriter, r *http.Request){
+	if r.method != "POST" {
+		http.Serverfile(w, r, "views/register.html")
+		return
+	}
+
+	first_name := r.formValue("first_name")
+	last_name := r.formValue("last_name")
+	email := r.formValue("email")
+	birthday := r.formValue("birthday")
+	username := r.formValue("username")
+	password := r.formValue("password")
 	
+	users := QueryUser(username)
+
 }
