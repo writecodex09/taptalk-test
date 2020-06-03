@@ -48,5 +48,11 @@ func routes() {
 }
 
 func main(){
-	fmt.Println("test")
+	connect_db()
+	routes()
+
+	defer db.Close()
+
+	fmt.Println("Server running on port :8000")
+	http.ListenAndServe(":8000", nil)
 }
