@@ -48,3 +48,5 @@ error handle
 15. Setelah tampilan login selesai saya mengerjakan fungsi login 
 
 16. Setelah fungsi login dan tampilan login selesai saya mengerjakan tampilan home
+
+17. Selanjutnya saya mengerjakan func home
