@@ -88,6 +88,9 @@ func QueryUser(username string) user {
 
 //func register 
 func register(w http.ResponseWriter, r *http.Request){
+	//kode ini saya buat untuk mengecek/memvalidasi apakah method yang digunakan post atau tidak
+	//jika method yang digunakan bukan post maka akan terredirect/menampilkan halaman register.html yang
+	//ada di folder views
 	if r.method != "POST" {
 		http.Serverfile(w, r, "views/register.html")
 		return
@@ -101,5 +104,6 @@ func register(w http.ResponseWriter, r *http.Request){
 	password := r.formValue("password")
 	
 	users := QueryUser(username) 
+
 
 }
