@@ -41,4 +41,6 @@ error handle
 
 12. Selanjutnya saya membuat fungsi QueryUser yang akan saya gunakan untuk mengambil data pengguna
 
-13. Saya kemudian membuat sebuh fungsi yaitu func register, dimana nanti fungis ini akan memungkinkan user dapat membuat akun yang baru dan akan tersimpan ke dalam database, saya memiliki masukan dan asumsi yaitu dalam mengamankan data saya melakukan enkripsi pada password yang dimasukan oleh user, agar datanya menjadi lebih aman. 
+13. Saya kemudian membuat sebuh fungsi yaitu func register, dimana nanti fungis ini akan memungkinkan user dapat membuat akun yang baru dan akan tersimpan ke dalam database, saya memiliki masukan dan asumsi yaitu dalam mengamankan data saya melakukan enkripsi pada password yang dimasukan oleh user, agar datanya menjadi lebih aman.
+
+14. Langkah selanjutnya yang saya lakukan adalah saya mengerjakan tampilan untuk form login nya
