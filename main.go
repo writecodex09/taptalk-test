@@ -24,8 +24,8 @@ type user struct {
 	ID        int
 	FirstName  string
 	LastName string
-	Email  string
-	Birthday string
+	Birthday  string
+	Email string
 	Username  string
 	Password  string
 }
@@ -68,8 +68,8 @@ func QueryUser(username string) user {
 		SELECT id, 
 		first_name, 
 		last_name, 
+		birthday,
 		email,
-		bithday,
 		username,
 		password 
 		FROM users WHERE username=?
@@ -78,8 +78,8 @@ func QueryUser(username string) user {
 			&users.ID,
 			&users.FirstName,
 			&users.LastName,
-			&users.Email,
 			&users.Birthday,
+			&users.Email,
 			&users.Username,
 			&users.Password
 		)
@@ -98,12 +98,30 @@ func register(w http.ResponseWriter, r *http.Request){
 
 	first_name := r.formValue("first_name")
 	last_name := r.formValue("last_name")
-	email := r.formValue("email")
-	birthday := r.formValue("birthday")
+	birthday := r.formValue("email")
+	email := r.formValue("birthday")
 	username := r.formValue("username")
 	password := r.formValue("password")
 	
 	users := QueryUser(username) 
 
+	if(user{}) == users {
+		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 
-}
+		if len(hashedPassword) != 0 && checkErr(w, r, err){
+			//code ini saya gunakan untuk mengecek apakah username yang dimasukan sudah ada atau belum didalam database,
+			//jika tidak ada maka proses akan dilanjutkakn 
+			stmt, err := db.Prepare("INSERT INTO users SET first_name=?, last_name=?, birthday=?, email=?, username=?, password=?")
+			if err == nil {
+				_, err := stmt.Exec(&first_name, &hashedPassword, &last_name, &username)
+				if err != nil {
+					http.Error(w, err.Error(), http.StatusInternalServerError)
+					return
+				}
+				http.Redirect(w, r, "/login", http.StatusSeeOther)
+				return
+			}
+		}
+	}else{
+			http.Redirect(w, r, "/register", 302)
+	}
