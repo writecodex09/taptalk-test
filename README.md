@@ -14,4 +14,6 @@ berganti menjadi firt_name dan last_name
 
 3. Langkah ketiga yang saya lakukan adalah membuat folder views dimana nanti nya akan berisi template engine yang akan mempercantik tampilan website dalam project test kali ini
 
-4. Langkah ke 4 saya membuat file register.html, login.html didalam folder views
+4. Langkah ke 4 saya membuat file register.html, login.html dan home.html didalam folder views
+
+5. Langkah ke 5 saya menginstall library yang dibutuhkan seperti sql driver, cryptto/bcrypt dan kataras/go-sessions karena dalam requirement yang diberikan oleh taptalk.io user can only have 1 active session at one time
