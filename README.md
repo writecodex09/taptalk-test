@@ -40,3 +40,5 @@ error handle
 11. Langkah berikutnya saya mengupdate fungsi main dengan memasukan fungsi connect() , routes() dan menjalankan fungsi http.ListenAndServe() untuk menghidupkan server dan menjalankan nya pada port 8080
 
 12. Selanjutnya saya membuat fungsi QueryUser yang akan saya gunakan untuk mengambil data pengguna
+
+13. Saya kemudian membuat sebuh fungsi yaitu func register 
