@@ -7,8 +7,9 @@ import (
 	 "fmt"
 	 "log"
 	 "net/http"
+	 "html/template"
 	 "golang.org/x/crypto/bcrypt"
-	 _"github.com/go-sql-driver/mysql"
+	 _ "github.com/go-sql-driver/mysql"
 	 "github.com/kataras/go-sessions"
 	// "os"
 )
@@ -63,7 +64,7 @@ func login(w http.ResponseWriter, r *http.Request){
 	//disini kita akan mengecek session 
 	//code yang ada dibawah ini saya gunakan untuk membuat session
 	session := sessions.Start(w, r)
-	if len(session.GetString(username)) != 0 && checkErr(w, r, err){
+	if len(session.GetString("username")) != 0 && checkErr(w, r, err){
 		http.Redirect(w, r, "/", 302)
 	}
 	//disini saya mencek apakah bila ada session , dan session itu benar bermethod post atau tidak 
@@ -86,7 +87,7 @@ func login(w http.ResponseWriter, r *http.Request){
 		session := sessions.Start(w, r)
 		session.Set("username", users.Username)
 		session.Set("password", users.Password)
-		http.Redirect(w, r, "/", 302))
+		http.Redirect(w, r, "/", 302)
 	}else{
 		http.Redirect(w, r, "/login", 302)
 	}
