@@ -122,6 +122,14 @@ if err != nil{
 t.Execute(w, data)
 	return
 }
+//func logout
+//fungsi berikut saya buat untuk dapat menghapus session
+func logout(w http.ResponseWriter, r *http.Request) {
+	session := sessions.Start(w, r)
+	session.Clear()
+	sessions.Destroy(w, r)
+	http.Redirect(w, r, "/", 302)
+}
 
 //fungsi Query User yang berguna untuk mengambil data pengguna 
 //berdasarkan username
