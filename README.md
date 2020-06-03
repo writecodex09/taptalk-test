@@ -44,3 +44,5 @@ error handle
 13. Saya kemudian membuat sebuh fungsi yaitu func register, dimana nanti fungis ini akan memungkinkan user dapat membuat akun yang baru dan akan tersimpan ke dalam database, saya memiliki masukan dan asumsi yaitu dalam mengamankan data saya melakukan enkripsi pada password yang dimasukan oleh user, agar datanya menjadi lebih aman.
 
 14. Langkah selanjutnya yang saya lakukan adalah saya mengerjakan tampilan untuk form login nya
+
+15. Setelah tampilan login selesai saya mengerjakan fungsi login 
