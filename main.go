@@ -104,6 +104,25 @@ func checkErr(w http.ResponseWriter, r *http.Request, err error) bool {
 	return true
 }
 
+//func home
+func home(w http.ResponseWriter, r *http.Request){
+	session := sessions.Start(w, r)
+	if len(session.GetString("username")) == 0{
+		http.Redirect(w, r, "/login", 301)
+	}
+	var data = map[string]string{
+		"username": session.GetString("username"),
+		"message":  "Selamat datang di TapTalk.io",
+}
+var t, err = template.ParseFiles("views/home.html")
+if err != nil{
+	fmt.Println(err.Error())
+	return
+}
+t.Execute(w, data)
+	return
+}
+
 //fungsi Query User yang berguna untuk mengambil data pengguna 
 //berdasarkan username
 func QueryUser(username string) user {
