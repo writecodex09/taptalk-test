@@ -25,6 +25,7 @@ type user struct {
 	FirstName  string
 	LastName string
 	Email  string
+	Birthday string
 	Username  string
 	Password  string
 }
@@ -55,4 +56,27 @@ func main(){
 
 	fmt.Println("Server running on port :8080")
 	http.ListenAndServe(":8000", nil)
+}
+func QueryUser(username string) user {
+	var users = user{}
+	err = db.QueryRow(`
+		SELECT id, 
+		first_name, 
+		last_name, 
+		email,
+		bithday,
+		username,
+		password 
+		FROM users WHERE username=?
+		`, username).
+		Scan(
+			&users.ID,
+			&users.FirstName,
+			&users.LastName,
+			&users.Email,
+			&users.Birthday,
+			&users.Username,
+			&users.Password
+		)
+	return users
 }
