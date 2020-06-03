@@ -13,6 +13,7 @@ import (
 )
 
 var db *sql.DB
+var err error
 
 func main(){
 	fmt.Println("test")
