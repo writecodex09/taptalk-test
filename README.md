@@ -33,3 +33,5 @@ sudah saya download sebelumnya
 
 9. Selanjutnya saya membuat fungsi untuk melakukan koneksi kedatabase bernama connect_db() dan selanjutnya di ikuti dengan 
 error handle
+
+10. Setelah itu saya membuat route /register dengan menggunakan fungsi http.HandleFunc()
