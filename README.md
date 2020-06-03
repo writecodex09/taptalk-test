@@ -20,3 +20,5 @@ berganti menjadi firt_name dan last_name
 
 6. Langkah ke 6 saya mengimport beberapa package yang akan kita gunakan sepertii net/http dan lainnya. beserta library yang 
 sudah saya download sebelumnya 
+
+7. Langkah selanjutnya saya membuat 2 buah variabel yaitu var err dan  var db
