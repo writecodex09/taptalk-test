@@ -30,3 +30,6 @@ sudah saya download sebelumnya
 	Username  string
 	Password  string
     yang akan menjadi model 
+
+9. Selanjutnya saya membuat fungsi untuk melakukan koneksi kedatabase bernama connect_db() dan selanjutnya di ikuti dengan 
+error handle
