@@ -27,6 +27,7 @@ sudah saya download sebelumnya
 	FirstName  string
 	LastName string
 	Email  string
+    Bithday string
 	Username  string
 	Password  string
     yang akan menjadi model 
@@ -37,3 +38,5 @@ error handle
 10. Setelah itu saya membuat route /register dengan menggunakan fungsi http.HandleFunc()
 
 11. Langkah berikutnya saya mengupdate fungsi main dengan memasukan fungsi connect() , routes() dan menjalankan fungsi http.ListenAndServe() untuk menghidupkan server dan menjalankan nya pada port 8080
+
+12. Selanjutnya saya membuat fungsi QueryUser yang akan saya gunakan untuk mengambil data pengguna
