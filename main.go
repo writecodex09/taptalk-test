@@ -53,6 +53,6 @@ func main(){
 
 	defer db.Close()
 
-	fmt.Println("Server running on port :8000")
+	fmt.Println("Server running on port :8080")
 	http.ListenAndServe(":8000", nil)
 }
