@@ -1,4 +1,4 @@
-# taptalk-test
+# taptalk-test for authentication
 Repo ini berisikan test untuk posisi backend developer di taptalk.io 
 
 1. Langkah pertama yang saya lakukan adalah melakukan inisialisasi project
