@@ -9,7 +9,7 @@ import (
 	 "net/http"
 	 "golang.org/x/crypto/bcrypt"
 	 _"github.com/go-sql-driver/mysql"
-	//  "github.com/kataras/go-sessions"
+	 "github.com/kataras/go-sessions"
 	// "os"
 )
 
@@ -57,6 +57,19 @@ func main(){
 
 	fmt.Println("starting web server at http://localhost:8080/")
 	http.ListenAndServe(":8080", nil)
+}
+//fungsi login
+func login(w http.ResponseWriter, r *http.Request){
+	session := sessions.Start(w, r)
+	if len(session.GetString(username)) != 0 && checkErr(w, r, err){
+		http.Redirect(w, r, "/", 302)
+	}
+	if r.Method != "POST" {
+		http.ServeFile(w, r, "views/login.html")
+		return
+	}
+	username := r.FormValue("username")
+	password := r.FormValue("password")
 }
 //func checkErr
 func checkErr(w http.ResponseWriter, r *http.Request, err error) bool {
