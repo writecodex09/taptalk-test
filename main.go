@@ -80,3 +80,6 @@ func QueryUser(username string) user {
 		)
 	return users
 }
+func register(w http.ResponseWriter, r *http.Request){
+	
+}
