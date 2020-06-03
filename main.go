@@ -12,6 +12,8 @@ import (
 	"github.com/kataras/go-sessions"
 )
 
+var db *sql.DB
+
 func main(){
 	fmt.Println("test")
 }
