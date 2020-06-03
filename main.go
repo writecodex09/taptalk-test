@@ -42,6 +42,11 @@ func connect_db(){
 	}
 }
 
+//membuat routes
+func routes() {
+	http.HandleFunc("/register", register)
+}
+
 func main(){
 	fmt.Println("test")
 }
